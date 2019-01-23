@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<%
+    # Geometry in inches
+    inches_to_meters = 0.0254
+    motor_radius = (2.5/2.0) * inches_to_meters
+    motor_length = 3.36 * inches_to_meters
+%>
+<sdf version='1.6'>
+    <model name="Mini_CIM">
+        <link name="motor">
+            <pose>0 0 0 <%= Math::PI/2%> 0 0</pose>
+            <collision name="motor_collision">
+                <geometry>
+                    <cylinder>
+                        <radius><%= motor_radius%></radius>
+                        <length><%= motor_length%></length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="motor_visual">
+                <geometry>
+                    <cylinder>
+                        <radius><%= motor_radius%></radius>
+                        <length><%= motor_length%></length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+</sdf>

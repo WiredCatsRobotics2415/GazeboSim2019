@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<%
+    # Geometry in inches
+    inches_to_meters = 0.0254
+    wheel_diameter = 6.0 * inches_to_meters
+    wheel_width = 1.0 * inches_to_meters
+%>
+<sdf version='1.6'>
+    <model name="6_Inch_Wheel">
+        <link name="wheel">
+            <pose>0 0 0 <%= Math::PI/2%> 0 0</pose>
+            <collision name="wheel_collision">
+                <geometry>
+                    <cylinder>
+                        <radius><%= wheel_diameter/2.0%></radius>
+                        <length><%= wheel_width%></length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="wheel_visual">
+                <geometry>
+                    <cylinder>
+                        <radius><%= wheel_diameter/2.0%></radius>
+                        <length><%= wheel_width%></length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+</sdf>

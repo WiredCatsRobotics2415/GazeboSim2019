@@ -1,100 +1,92 @@
 <?xml version='1.0'?>
-<%
-    # Geometry in inches
-    inches_to_meters = 0.0254
-    tube_width = 2.0 * inches_to_meters
-    tube_height = 2.0 * inches_to_meters
-    chassis_length = 30.0 * inches_to_meters
-    chassis_width = 30.0 * inches_to_meters
-    side_stick_out = 2.0 * inches_to_meters
-%>
+
 <sdf version='1.6'>
     <model name="Drivetrain">
         <link name="left_tube">
-            <pose>0 <%= (chassis_width/2.0)-side_stick_out-(tube_width/2.0)%> 0 0 0 0 0</pose>
+            <pose>0 0.3048 0 0 0 0 0</pose>
             <collision name="left_tube_collision">
                 <geometry>
                     <box>
-                        <size><%= chassis_length-(tube_width*2.0)%> <%= tube_width%> <%= tube_height%> 0 0 0</size>
+                        <size>0.6604 0.0508 0.0508 0 0 0</size>
                     </box>
                 </geometry>
             </collision>
             <visual name="left_tube_visual">
                 <geometry>
                     <box>
-                        <size><%= chassis_length-(tube_width*2.0)%> <%= tube_width%> <%= tube_height%> 0 0 0</size>
+                        <size>0.6604 0.0508 0.0508 0 0 0</size>
                     </box>
                 </geometry>
             </visual>
         </link>
         <link name="right_tube">
-            <pose>0 <%= -((chassis_width/2.0)-side_stick_out-(tube_width/2.0))%> 0 0 0 0 0</pose>
+            <pose>0 -0.3048 0 0 0 0 0</pose>
             <collision name="right_tube_collision">
                 <geometry>
                     <box>
-                        <size><%= chassis_length-(tube_width*2.0)%> <%= tube_width%> <%= tube_height%> 0 0 0</size>
+                        <size>0.6604 0.0508 0.0508 0 0 0</size>
                     </box>
                 </geometry>
             </collision>
             <visual name="right_tube_visual">
                 <geometry>
                     <box>
-                        <size><%= chassis_length-(tube_width*2.0)%> <%= tube_width%> <%= tube_height%> 0 0 0</size>
+                        <size>0.6604 0.0508 0.0508 0 0 0</size>
                     </box>
                 </geometry>
             </visual>
         </link>
         <link name="top_tube">
-            <pose><%= (chassis_length/2.0)-(tube_width/2.0)%> 0 0 0 0 0</pose>
+            <pose>0.3556 0 0 0 0 0</pose>
             <collision name="top_tube_collision">
                 <geometry>
                     <box>
-                        <size><%= tube_width%> <%= chassis_width%> <%= tube_height%> 0 0 0</size>
+                        <size>0.0508 0.762 0.0508 0 0 0</size>
                     </box>
                 </geometry>
             </collision>
             <visual name="top_tube_visual">
                 <geometry>
                     <box>
-                        <size><%= tube_width%> <%= chassis_width%> <%= tube_height%> 0 0 0</size>
+                        <size>0.0508 0.762 0.0508 0 0 0</size>
                     </box>
                 </geometry>
             </visual>
         </link>
         <link name="bottom_tube">
-            <pose><%= -((chassis_length/2.0)-(tube_width/2.0))%> 0 0 0 0 0</pose>
+            <pose>-0.3556 0 0 0 0 0</pose>
             <collision name="bottom_tube_collision">
                 <geometry>
                     <box>
-                        <size><%= tube_width%> <%= chassis_width%> <%= tube_height%> 0 0 0</size>
+                        <size>0.0508 0.762 0.0508 0 0 0</size>
                     </box>
                 </geometry>
             </collision>
             <visual name="bottom_tube_visual">
                 <geometry>
                     <box>
-                        <size><%= tube_width%> <%= chassis_width%> <%= tube_height%> 0 0 0</size>
+                        <size>0.0508 0.762 0.0508 0 0 0</size>
                     </box>
                 </geometry>
             </visual>
         </link>
         <joint type="fixed" name="left_top_tube_joint">
-            <pose><%= (chassis_length/2.0)-tube_width%> 0 <%= tube_height/2.0%> 0 0 0</pose>
+            <pose>0.3302 0 0.0254 0 0 0</pose>
             <child>left_tube</child>
             <parent>top_tube</parent>
         </joint>
         <joint type="fixed" name="right_top_tube_joint">
-            <pose><%= (chassis_length/2.0)-tube_width%> 0 <%= tube_height/2.0%> 0 0 0</pose>
+            <pose>0.3302 0 0.0254 0 0 0</pose>
             <child>right_tube</child>
             <parent>top_tube</parent>
         </joint>
         <joint type="fixed" name="left_bottom_tube_joint">
-            <pose><%= -((chassis_length/2.0)-tube_width)%> 0 <%= tube_height/2.0%> 0 0 0</pose>
+            <pose>-0.3302 0 0.0254 0 0 0</pose>
             <child>left_tube</child>
             <parent>bottom_tube</parent>
         </joint>
         <joint type="fixed" name="right_bottom_tube_joint">
-            <pose><%= -((chassis_length/2.0)-tube_width)%> 0 <%= tube_height/2.0%> 0 0 0</pose>
+            <pose>-0.3302 0 0.0254 0 0 0</pose>
             <child>right_tube</child>
             <parent>bottom_tube</parent>
         </joint>

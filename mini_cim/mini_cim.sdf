@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+
+<sdf version='1.6'>
+    <model name="Mini_CIM">
+        <link name="motor">
+            <pose>0 0 0 1.5707963267948966 0 0</pose>
+            <collision name="motor_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.03175</radius>
+                        <length>0.08534399999999999</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="motor_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.03175</radius>
+                        <length>0.08534399999999999</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+</sdf>

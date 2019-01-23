@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+
+<sdf version='1.6'>
+    <model name="6_Inch_Wheel">
+        <link name="wheel">
+            <pose>0 0 0 1.5707963267948966 0 0</pose>
+            <collision name="wheel_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.07619999999999999</radius>
+                        <length>0.0254</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="wheel_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.07619999999999999</radius>
+                        <length>0.0254</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+</sdf>

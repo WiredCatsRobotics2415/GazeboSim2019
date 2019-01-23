@@ -6,7 +6,7 @@
     wheel_width = 1.0 * inches_to_meters
 %>
 <sdf version='1.6'>
-    <model name="6_Inch_Wheel">
+    <model name="Wheel">
         <link name="wheel">
             <pose>0 0 0 <%= Math::PI/2%> 0 0</pose>
             <collision name="wheel_collision">

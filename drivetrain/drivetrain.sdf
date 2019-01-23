@@ -90,5 +90,83 @@
             <child>right_tube</child>
             <parent>bottom_tube</parent>
         </joint>
+        <include>
+            <uri>model://GazeboSim2019/wheel</uri>
+            <pose>0.2413 0.3429 0 0 0 0</pose>
+            <name>front_left_wheel</name>
+        </include>
+        <include>
+            <uri>model://GazeboSim2019/wheel</uri>
+            <pose>0 0.3429 0 0 0 0</pose>
+            <name>middle_left_wheel</name>
+        </include>
+        <include>
+            <uri>model://GazeboSim2019/wheel</uri>
+            <pose>-0.2413 0.3429 0 0 0 0</pose>
+            <name>back_left_wheel</name>
+        </include>
+        <include>
+            <uri>model://GazeboSim2019/wheel</uri>
+            <pose>0.2413 -0.3429 0 0 0 0</pose>
+            <name>front_right_wheel</name>
+        </include>
+        <include>
+            <uri>model://GazeboSim2019/wheel</uri>
+            <pose>0 -0.3429 0 0 0 0</pose>
+            <name>middle_right_wheel</name>
+        </include>
+        <include>
+            <uri>model://GazeboSim2019/wheel</uri>
+            <pose>-0.2413 -0.3429 0 0 0 0</pose>
+            <name>back_right_wheel</name>
+        </include>
+        <joint name="front_left_wheel_joint" type="revolute">
+            <pose>0 0 0.0127 0 0 0</pose>
+            <child>front_left_wheel::wheel</child>
+            <parent>left_tube</parent>
+            <axis>
+                <xyz>0.0 0.0 -1.0</xyz>
+            </axis>
+        </joint>
+        <joint name="middle_left_wheel_joint" type="revolute">
+            <pose>0 0 0.0127 0 0 0</pose>
+            <child>middle_left_wheel::wheel</child>
+            <parent>left_tube</parent>
+            <axis>
+                <xyz>0.0 0.0 -1.0</xyz>
+            </axis>
+        </joint>
+        <joint name="back_left_wheel_joint" type="revolute">
+            <pose>0 0 0.0127 0 0 0</pose>
+            <child>back_left_wheel::wheel</child>
+            <parent>left_tube</parent>
+            <axis>
+                <xyz>0.0 0.0 -1.0</xyz>
+            </axis>
+        </joint>
+        <joint name="front_right_wheel_joint" type="revolute">
+            <pose>0 0 -0.0127 0 0 0</pose>
+            <child>front_right_wheel::wheel</child>
+            <parent>right_tube</parent>
+            <axis>
+                <xyz>0.0 0.0 1.0</xyz>
+            </axis>
+        </joint>
+        <joint name="middle_right_wheel_joint" type="revolute">
+            <pose>0 0 -0.0127 0 0 0</pose>
+            <child>middle_right_wheel::wheel</child>
+            <parent>right_tube</parent>
+            <axis>
+                <xyz>0.0 0.0 1.0</xyz>
+            </axis>
+        </joint>
+        <joint name="back_right_wheel_joint" type="revolute">
+            <pose>0 0 -0.0127 0 0 0</pose>
+            <child>back_right_wheel::wheel</child>
+            <parent>right_tube</parent>
+            <axis>
+                <xyz>0.0 0.0 1.0</xyz>
+            </axis>
+        </joint>
     </model>
 </sdf>

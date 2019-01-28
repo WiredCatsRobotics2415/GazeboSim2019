@@ -2,6 +2,7 @@
 
 <sdf version='1.6'>
     <model name="Drivetrain">
+        <static>false</static>
         <link name="left_tube">
             <pose>0 0.3048 0 0 0 0 0</pose>
             <collision name="left_tube_collision">
@@ -167,6 +168,18 @@
             <axis>
                 <xyz>0.0 0.0 1.0</xyz>
             </axis>
+        </joint>
+        <joint name="test_gearbox" type="gearbox">
+            <pose>0 0 0 0 0 0</pose>
+            <child>back_left_wheel</child>
+            <parent>middle_left_wheel</parent>
+            <gearbox_ratio>1</gearbox_ratio>
+            <axis>
+                <xyz>0 0 1</xyz>
+            </axis>
+            <axis2>
+                <xyz>0 0 1</xyz>
+            </axis2>
         </joint>
     </model>
 </sdf>

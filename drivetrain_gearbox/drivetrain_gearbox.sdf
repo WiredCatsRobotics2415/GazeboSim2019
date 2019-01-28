@@ -1,0 +1,86 @@
+<?xml version='1.0'?>
+ 
+<sdf version='1.6'>
+    <model name="Drivetrain_Gearbox">
+        <link name="gearbox">
+            <pose>0 -0.0254 0.05079999999999999 0 0 0</pose>
+            <collision name="gearbox_collision">
+                <geometry>
+                    <box>
+                        <size>0.127 0.0508 0.15239999999999998 0 0 0</size>
+                    </box>
+                </geometry>
+            </collision>
+            <visual name="gearbox_visual">
+                <geometry>
+                    <box>
+                        <size>0.127 0.0508 0.15239999999999998 0 0 0</size>
+                    </box>
+                </geometry>
+            </visual>
+        </link>
+        <link name="output_gear">
+            <pose> 0 -0.0254 0 1.5707963267948966 0 0</pose>
+            <collision name="output_gear_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.0254</radius>
+                        <length>0.00635</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="output_gear_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.0254</radius>
+                        <length>0.00635</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+        <joint name="output_gear_joint" type="revolute">
+            <pose> 0 0 0 1.5707963267948966 0 0</pose>
+            <child>output_gear</child>
+            <parent>gearbox</parent>
+            <axis> 
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+        </joint>
+        <include>
+            <uri>model://GazeboSim2019/mini_cim</uri>
+            <pose>0 -0.0508 0.07829630657015593 4.71238898038469 0 0</pose>
+            <name>middle_cim</name>
+        </include>
+        <include>
+            <uri>model://GazeboSim2019/mini_cim</uri>
+            <pose>0.027496306570155928 -0.0508 0.02330369342984407 4.71238898038469 0 0</pose>
+            <name>back_cim</name>
+        </include>
+        <include>
+            <uri>model://GazeboSim2019/mini_cim</uri>
+            <pose>-0.027496306570155928 -0.0508 0.02330369342984407 4.71238898038469 0 0</pose>
+            <name>front_cim</name>
+        </include>
+        <joint type="fixed" name="middle_cim_joint">
+            <pose>0 0 0.042671999999999995 0 0 0</pose>
+            <child>middle_cim::motor</child>
+            <parent>gearbox</parent>
+        </joint>
+        <joint type="fixed" name="back_cim_joint">
+            <pose>0 0 0.042671999999999995 0 0 0</pose>            
+            <child>back_cim::motor</child>
+            <parent>gearbox</parent>
+        </joint>
+        <joint type="fixed" name="front_cim_joint">
+            <pose>0 0 0.042671999999999995 0 0 0</pose>
+            <child>front_cim::motor</child>
+            <parent>gearbox</parent>
+        </joint>
+        <!--<joint name="front_cim_output_joint" type="gearbox">
+            <child>front_cim::motor_shaft<child>
+            <parent>output_gear</parent>
+            <gearbox_ratio>5</gearbox_ratio>
+            <axis>
+                <xyz>-->
+    </model>
+</sdf>

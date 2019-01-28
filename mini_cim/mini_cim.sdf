@@ -3,7 +3,7 @@
 <sdf version='1.6'>
     <model name="Mini_CIM">
         <link name="motor">
-            <pose>0 0 0 1.5707963267948966 0 0</pose>
+            <pose>0 0 -0.042671999999999995 0 0 0</pose>
             <collision name="motor_collision">
                 <geometry>
                     <cylinder>
@@ -21,5 +21,32 @@
                 </geometry>
             </visual>
         </link>
+        <link name="motor_shaft">
+            <pose>0 0 0.0178 0 0 0</pose>
+            <collision name="motor_shaft_collision">
+                <geometry>
+                    <cylinder>
+                        <radius>0.008</radius>
+                        <length>0.0356</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="motor_shaft_visual">
+                <geometry>
+                    <cylinder>
+                        <radius>0.008</radius>
+                        <length>0.0356</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+        <joint name="motor_shaft_to_motor" type="revolute">
+            <pose>0 0 -0.0178 0 0 0</pose>
+            <child>motor_shaft</child>
+            <parent>motor</parent>
+            <axis>
+                <xyz>0.0 0.0 1.0</xyz>
+            </axis>
+        </joint>
     </model>
 </sdf>

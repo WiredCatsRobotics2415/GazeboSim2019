@@ -11,7 +11,7 @@
     output_radius = 1 * inches_to_meters
     output_length = 0.25 * inches_to_meters
     motor_length = 3.36 * inches_to_meters
-    gear_ratio = 5
+    gear_ratio = 1
 %> 
 <sdf version='1.6'>
     <model name="Drivetrain_Gearbox">
@@ -56,7 +56,8 @@
             <child>output_gear</child>
             <parent>gearbox</parent>
             <axis> 
-                <xyz>0.0 -1.0 0.0</xyz>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 1.0 0.0</xyz>
             </axis>
         </joint>
         <include>
@@ -74,6 +75,51 @@
             <pose><%= -(Math.sqrt(motor_distance_apart**2-(motor_distance_apart/2.0)**2)/2.0)%> <%= -width%> <%= -(Math.sqrt(motor_distance_apart**2-(motor_distance_apart/2.0)**2)/2.0)+motor_height%> <%= Math::PI*1.5%> 0 0</pose>
             <name>front_cim</name>
         </include>
+        <joint name="front_cim_output_joint" type="gearbox">
+            <child>output_gear</child>
+            <parent>front_cim::motor_shaft</parent>
+            <pose>0 0 0 0 0 0</pose>
+            <gearbox_ratio><%= gear_ratio%></gearbox_ratio>
+            <gearbox_reference_body>gearbox</gearbox_reference_body>
+            <axis>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+            <axis2>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 1.0 0.0</xyz>
+            </axis2>
+        </joint>
+        <joint name="middle_cim_output_joint" type="gearbox">
+            <child>output_gear</child>
+            <parent>middle_cim::motor_shaft</parent>
+            <pose>0 0 0 0 0 0</pose>
+            <gearbox_ratio><%= gear_ratio%></gearbox_ratio>
+            <gearbox_reference_body>gearbox</gearbox_reference_body>
+            <axis>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+            <axis2>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 1.0 0.0</xyz>
+            </axis2>
+        </joint>
+        <joint name="back_cim_output_joint" type="gearbox">
+            <child>output_gear</child>
+            <parent>back_cim::motor_shaft</parent>
+            <pose>0 0 0 0 0 0</pose>
+            <gearbox_ratio><%= gear_ratio%></gearbox_ratio>
+            <gearbox_reference_body>gearbox</gearbox_reference_body>
+            <axis>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+            <axis2>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 1.0 0.0</xyz>
+            </axis2>
+        </joint>
         <joint type="fixed" name="middle_cim_joint">
             <pose>0 0 <%= motor_length/2.0%> 0 0 0</pose>
             <child>middle_cim::motor</child>
@@ -89,11 +135,5 @@
             <child>front_cim::motor</child>
             <parent>gearbox</parent>
         </joint>
-        <!--<joint name="front_cim_output_joint" type="gearbox">
-            <child>front_cim::motor_shaft<child>
-            <parent>output_gear</parent>
-            <gearbox_ratio><%= gear_ratio%></gearbox_ratio>
-            <axis>
-                <xyz>-->
     </model>
 </sdf>

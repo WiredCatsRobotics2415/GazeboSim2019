@@ -169,16 +169,114 @@
                 <xyz>0.0 0.0 1.0</xyz>
             </axis>
         </joint>
-        <joint name="test_gearbox" type="gearbox">
+        <include>
+            <uri>model://GazeboSim2019/drivetrain_gearbox</uri>
+            <pose>0 0.2794 0 0 0 0</pose>
+            <name>right_gearbox</name>
+        </include>
+        <include>
+            <uri>model://GazeboSim2019/drivetrain_gearbox</uri>
+            <pose>0 -0.2794 0 0 0 3.141592653589793</pose>
+            <name>left_gearbox</name>
+        </include>
+        <joint name="left_gearbox_joint" type="fixed">
+            <child>left_gearbox::gearbox</child>
+            <parent>left_tube</parent>
             <pose>0 0 0 0 0 0</pose>
-            <child>back_left_wheel</child>
-            <parent>middle_left_wheel</parent>
+        </joint>
+        <joint name="right_gearbox_joint" type="fixed">
+            <child>right_gearbox::gearbox</child>
+            <parent>right_tube</parent>
+            <pose>0 0 0 0 0 0</pose>
+        </joint>
+        <joint name="front_left_wheel_gearbox_joint" type="gearbox">
+            <child>front_left_wheel::wheel</child>
+            <parent>left_gearbox::output_gear</parent>
+            <pose>0 0 0 0 0 0</pose>
             <gearbox_ratio>1</gearbox_ratio>
+            <gearbox_reference_body>left_tube</gearbox_reference_body>
             <axis>
-                <xyz>0 0 1</xyz>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
             </axis>
             <axis2>
-                <xyz>0 0 1</xyz>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 1.0 0.0</xyz>
+            </axis2>
+        </joint>
+        <joint name="middle_left_wheel_gearbox_joint" type="gearbox">
+            <child>middle_left_wheel::wheel</child>
+            <parent>left_gearbox::output_gear</parent>
+            <pose>0 0 0 0 0 0</pose>
+            <gearbox_ratio>1</gearbox_ratio>
+            <gearbox_reference_body>left_tube</gearbox_reference_body>
+            <axis>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+            <axis2>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 1.0 0.0</xyz>
+            </axis2>
+        </joint>
+        <joint name="back_left_wheel_gearbox_joint" type="gearbox">
+            <child>back_left_wheel::wheel</child>
+            <parent>left_gearbox::output_gear</parent>
+            <pose>0 0 0 0 0 0</pose>
+            <gearbox_ratio>1</gearbox_ratio>
+            <gearbox_reference_body>left_tube</gearbox_reference_body>
+            <axis>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+            <axis2>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 1.0 0.0</xyz>
+            </axis2>
+        </joint>
+        <joint name="front_right_wheel_gearbox_joint" type="gearbox">
+            <child>front_right_wheel::wheel</child>
+            <parent>right_gearbox::output_gear</parent>
+            <pose>0 0 0 0 0 0</pose>
+            <gearbox_ratio>1</gearbox_ratio>
+            <gearbox_reference_body>right_tube</gearbox_reference_body>
+            <axis>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+            <axis2>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis2>
+        </joint>
+        <joint name="middle_right_wheel_gearbox_joint" type="gearbox">
+            <child>middle_right_wheel::wheel</child>
+            <parent>right_gearbox::output_gear</parent>
+            <pose>0 0 0 0 0 0</pose>
+            <gearbox_ratio>1</gearbox_ratio>
+            <gearbox_reference_body>right_tube</gearbox_reference_body>
+            <axis>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+            <axis2>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis2>
+        </joint>
+        <joint name="back_right_wheel_gearbox_joint" type="gearbox">
+            <child>back_right_wheel::wheel</child>
+            <parent>right_gearbox::output_gear</parent>
+            <pose>0 0 0 0 0 0</pose>
+            <gearbox_ratio>1</gearbox_ratio>
+            <gearbox_reference_body>right_tube</gearbox_reference_body>
+            <axis>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
+            </axis>
+            <axis2>
+                <use_parent_model_frame>true</use_parent_model_frame>
+                <xyz>0.0 -1.0 0.0</xyz>
             </axis2>
         </joint>
     </model>
